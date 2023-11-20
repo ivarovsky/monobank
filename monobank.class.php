@@ -44,7 +44,8 @@ class monobank
 
       
     $pay_link = send_data_to_monobank($data,"api/merchant/invoice/create",$key);
-      return "<a href='{$pay_link}' ><button>PAY</button></a>";
+    if(strlen($pay_link))  return "<a href='{$pay_link}' ><button>PAY</button></a>";
+    else return "Something went wrong!";
     }
     
   }
