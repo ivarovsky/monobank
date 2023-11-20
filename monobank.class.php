@@ -1,4 +1,12 @@
-<?php class monobank 
+<?php 
+///////////////////////////////////////////////////////////////////
+
+// Created by Senya Ivarovskyi for personal use
+// If you have any questions, please send me email ivarovskii@ukr.net
+
+///////////////////////////////////////////////////////////////////
+
+class monobank 
   {
     private $testing_mode = 1;
     private $api_link = "https://api.monobank.ua/";
@@ -27,7 +35,7 @@
     
     public function create_payment_button($data,$key)
     {
-     if(!isset($data['amount'])) {echo "Amount not set" exit();}
+     if(!isset($data['amount'])) {echo "Amount not set" exit();} //Check Required Field
       if(!isset($data['ccy'])) $data['ccy'] = 980;
       if(!isset($data['redirectUrl'])) $data['redirectUrl'] =$this->redirectUrl;
       if(!isset($data['webHookUrl'])) $data['webHookUrl'] =$this->webHookUrl;
