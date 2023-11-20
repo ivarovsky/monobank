@@ -13,7 +13,7 @@
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $timeout);   // The number of seconds to wait while trying to connect
         curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);          // The maximum number of seconds to allow cURL functions to execute
         curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $postfields);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ["X-Token"=>$key]);
         $server_output = curl_exec($curl);
@@ -22,6 +22,9 @@
         return $server_output;
     }
     
-    public function create_payment_button($data){}
+    public function create_payment_button($data)
+    {
+      
+    }
     
   }
