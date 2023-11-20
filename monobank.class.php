@@ -4,6 +4,8 @@
 // Created by Senya Ivarovskyi for personal use
 // If you have any questions, please send me email ivarovskii@ukr.net
 
+// OFFICIAL API DOCS HERE: https://api.monobank.ua/docs/acquiring.html
+
 ///////////////////////////////////////////////////////////////////
 
 class monobank 
