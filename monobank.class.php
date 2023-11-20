@@ -15,6 +15,7 @@
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $postfields);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ["X-Token"=>$key]);
         $server_output = curl_exec($curl);
         $this->_server_response_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
