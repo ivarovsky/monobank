@@ -7,7 +7,7 @@
     private function send_data_to_monobank($params,$action,$key)
     {
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_URL, $this->api_link.$action);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true); // Avoid MITM vulnerability http://phpsecurity.readthedocs.io/en/latest/Input-Validation.html#validation-of-input-sources
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);    // Check the existence of a common name and also verify that it matches the hostname provided
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $timeout);   // The number of seconds to wait while trying to connect
