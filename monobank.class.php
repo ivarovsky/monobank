@@ -13,7 +13,7 @@ class monobank
     private $testing_mode = 1;
     private $api_link = "https://api.monobank.ua/";
     private $redirectUrl = "";
-    private webHookUrl = "";
+    private $webHookUrl = "";
     
     private function check_signature($params){}
 
