@@ -15,7 +15,30 @@ class monobank
     private $redirectUrl = "";
     private $webHookUrl = "";
     private $_server_response_code = null;
-    private function check_signature($params){}
+
+private function get_public($key)
+	{
+		$link = "https://api.monobank.ua/api/merchant/pubkey";
+		    $ch=curl_init();
+        curl_setopt($ch,CURLOPT_URL,$link);
+    	curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'POST');
+        curl_setopt($ch,CURLOPT_POSTFIELDS,"");
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch,CURLOPT_HTTPHEADER,["X-Token: {$key}","Content-Type: application/json","Content-Length: ".strlen($params)]);
+        $server_output=curl_exec($ch);
+        $this->_server_response_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+		return $server_output;
+	}	  
+    
+public function check_signature_monobank($message,$pubKeyBase64,$xSignBase64)
+	{
+  if(is_array($message)) $message=json_encode($message); 
+  $signature = base64_decode($xSignBase64);
+  $publicKey = openssl_get_publickey(base64_decode($pubKeyBase64));
+  $result = openssl_verify($message, $signature, $publicKey, OPENSSL_ALGO_SHA256);
+  return $result === 1 ? true : false;
+	}
 	
 	    private function send_data_to_monobank($params,$action,$key)
     {
