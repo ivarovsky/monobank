@@ -45,5 +45,15 @@ class monobank
 	    if(isset($pay_link) || strlen($pay_link['pageUrl'])>2)  return "<a href='{$pay_link['pageUrl']}' ><button>PAY</button></a>";
     else return json_encode($pay_link);
 	  }
+
+	  public function refund_order_monobank($data)
+		{
+			if(!isset($data['invoiceId']) AND !isset($data['Xtoken']))
+				{
+					$refund = send_data_to_monobank(["invoiceId"=>$data['invoiceId']],"api/merchant/invoice/cancel",$data['Xtoken']);
+					return $redund;
+				}
+				else return 0;
+			}
     
   }
